@@ -89,7 +89,7 @@ int main(int argc, char** argv)
 			{
 				for (j = 0; j < arr_size; ++j)
 				{
-					arr3[i*arr_size + j] = S * arr1[i*arr_size + j] + arr2[i*arr_size + j] - arr1[i*arr_size + j];
+					arr3[i*arr_size + j] = arr2[i*arr_size + j] - arr1[i*arr_size + j];
 				}
 			}
 		}
@@ -97,6 +97,14 @@ int main(int argc, char** argv)
 
 	S = sqrt(S);
 	printf("E = %f\n", S);
+
+	for (i = 0; i < arr_size; ++i)
+	{
+		for (j = 0; j < arr_size; ++j)
+		{
+			arr3[i*arr_size + j] += S * arr1[i*arr_size + j];
+		}
+	}
 
 	double time2 = omp_get_wtime() - time;
 	printf("time = %f\n", time2);
